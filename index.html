@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassroomColor - Психология цвета и СанПиН</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 2rem 0;
+            border-bottom: 2px solid #1e3c72;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            background-color: #1e3c72;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .tagline {
+            margin-top: 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 1rem 1.2rem;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        .nav-links a.active {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .section-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #1e3c72;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+            color: #333;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background-color: #fafafa;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid #1e3c72;
+        }
+        
+        /* Grid for infographics */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .grid-item {
+            background-color: #fafafa;
+            padding: 1.2rem;
+            text-align: center;
+            border-radius: 6px;
+        }
+        
+        .grid-item i {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+        
+        .grid-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .grid-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        
+        /* Color Palette */
+        .palette {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            height: 40px;
+        }
+        
+        .palette div {
+            flex: 1;
+            border-radius: 4px;
+        }
+        
+        /* Gallery Slider */
+        .gallery-section {
+            margin: 2rem 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .gallery-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #333;
+            transition: all 0.2s;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-btn:hover {
+            background: #1e3c72;
+            color: white;
+        }
+        
+        .gallery-btn.prev {
+            left: 20px;
+        }
+        
+        .gallery-btn.next {
+            right: 20px;
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .gallery-dot.active {
+            background: #1e3c72;
+            transform: scale(1.2);
+        }
+        
+        /* SanPin Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .table th {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table tr:hover {
+            background-color: #fafafa;
+        }
+        
+        /* Requirements Grid */
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .req-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .req-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .req-item {
+            background-color: #fafafa;
+            padding: 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .req-item i {
+            color: #1e3c72;
+            font-size: 1.2rem;
+        }
+        
+        /* Quiz */
+        .quiz {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .dot.active {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        .dot.done {
+            background-color: #aaa;
+            color: white;
+        }
+        
+        .question {
+            background-color: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .q-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background-color 0.2s;
+            background-color: white;
+        }
+        
+        .option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .option.correct {
+            background-color: #e8f5e9;
+            border-color: #2e7d32;
+        }
+        
+        .option.wrong {
+            background-color: #ffebee;
+            border-color: #c62828;
+        }
+        
+        .option.disabled {
+            pointer-events: none;
+        }
+        
+        .marker {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .feedback {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+        }
+        
+        .feedback.good {
+            background-color: #e8f5e9;
+            border: 1px solid #2e7d32;
+            color: #1b5e20;
+        }
+        
+        .feedback.bad {
+            background-color: #ffebee;
+            border: 1px solid #c62828;
+            color: #b71c1c;
+        }
+        
+        .nav-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            background-color: #0f2a4f;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #ddd;
+        }
+        
+        .result {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fafafa;
+            border-radius: 8px;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+        
+        .restart {
+            background-color: #1e3c72;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.2s;
+        }
+        
+        .restart:hover {
+            background-color: #0f2a4f;
+        }
+        
+        .mistakes {
+            text-align: left;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            border: 1px solid #eee;
+        }
+        
+        .mistake-item {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #c62828;
+            background-color: #fafafa;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 2rem 0 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #1e3c72;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-palette"></i>
+                <h1>ClassroomColor</h1>
+            </div>
+            <div class="tagline">Психология цвета и нормы СанПиН для школьных кабинетов</div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#psychology" class="active">Психология</a></li>
+                <li><a href="#characteristics">Характеристики</a></li>
+                <li><a href="#temperature">Теплота</a></li>
+                <li><a href="#age">Возраст</a></li>
+                <li><a href="#strategy">Стратегия</a></li>
+                <li><a href="#gallery">Цвета стен</a></li>
+                <li><a href="#sanpin">СанПиН</a></li>
+                <li><a href="#quiz">Тест</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <!-- Психология цвета -->
+        <section id="psychology">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h2 class="section-title">Психология цвета</h2>
+            </div>
+            
+            <p>Психология цвета изучает воздействие цветов на эмоции, поведение и состояние человека. В школе цвет влияет на концентрацию, мотивацию и настроение учеников. Правильная цветовая гамма снижает утомление и создает комфорт.</p>
+            
+            <p>Школа не должна быть скучной и серой. Современные исследования показывают, что цвет помогает детям лучше учиться и чувствовать себя безопасно.</p>
+            
+            <div class="grid-3">
+                <div class="grid-item">
+                    <i class="fas fa-fire"></i>
+                    <h4>Теплые тона</h4>
+                    <p>Красный, оранжевый, желтый. Дают энергию, подходят для творчества.</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-water"></i>
+                    <h4>Холодные тона</h4>
+                    <p>Синий, голубой. Успокаивают, помогают сосредоточиться.</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-circle"></i>
+                    <h4>Нейтральные</h4>
+                    <p>Серый, бежевый, белый. Служат фоном.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Характеристики цвета -->
+        <section id="characteristics">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h2 class="section-title">Характеристики цвета</h2>
+            </div>
+            
+            <div class="info-card">
+                <h3>Тон (оттенок)</h3>
+                <p>Это название цвета. Главная характеристика, которая влияет на эмоции.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Насыщенность</h3>
+                <p>Яркость или блеклость цвета. Яркие цвета возбуждают, блеклые - успокаивают.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Яркость</h3>
+                <p>Светлый или темный цвет. Светлые тона расширяют пространство, темные - привлекают внимание.</p>
+            </div>
+        </section>
+        
+        <!-- Теплота цвета -->
+        <section id="temperature">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-thermometer-half"></i>
+                </div>
+                <h2 class="section-title">Теплота цвета</h2>
+            </div>
+            
+            <div class="info-card">
+                <h3>Теплые цвета (красный, оранжевый, желтый)</h3>
+                <p>Активизируют, повышают давление, учащают пульс.</p>
+                <p>Дают ощущение тепла и энергии. Хороши для творческих зон.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Холодные цвета (синий, голубой, фиолетовый)</h3>
+                <p>Успокаивают, снижают давление.</p>
+                <p>Помогают сосредоточиться. Лучше всего для учебы.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Нейтральные цвета (белый, серый, бежевый, коричневый)</h3>
+                <p>Не влияют на организм, служат фоном для других цветов.</p>
+            </div>
+        </section>
+        
+        <!-- Восприятие по возрастам -->
+        <section id="age">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2 class="section-title">Восприятие цвета в разном возрасте</h2>
+            </div>
+            
+            <div class="info-card">
+                <h3>4-10 лет</h3>
+                <p>Нравятся яркие теплые цвета: красный, розовый, оранжевый.</p>
+                <div class="palette">
+                    <div style="background-color: #E9967A;"></div>
+                    <div style="background-color: #DA70D6;"></div>
+                    <div style="background-color: #FFB6C1;"></div>
+                    <div style="background-color: #FFD700;"></div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>11-12 лет</h3>
+                <p>Интерес к зеленому, желтому, красному.</p>
+                <div class="palette">
+                    <div style="background-color: #98FB98;"></div>
+                    <div style="background-color: #FFD700;"></div>
+                    <div style="background-color: #FF6347;"></div>
+                    <div style="background-color: #87CEEB;"></div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>13-16 лет</h3>
+                <p>Предпочитают синий, ультрамарин, оранжевый.</p>
+                <div class="palette">
+                    <div style="background-color: #4169E1;"></div>
+                    <div style="background-color: #1E90FF;"></div>
+                    <div style="background-color: #FFA500;"></div>
+                    <div style="background-color: #32CD32;"></div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>17-19 лет</h3>
+                <p>Выбирают красно-оранжевые тона.</p>
+                <div class="palette">
+                    <div style="background-color: #FF4500;"></div>
+                    <div style="background-color: #FF8C00;"></div>
+                    <div style="background-color: #8B0000;"></div>
+                    <div style="background-color: #2F4F4F;"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Стратегия по возрастам -->
+        <section id="strategy">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2 class="section-title">Цвета для разных классов</h2>
+            </div>
+            
+            <div class="info-card">
+                <h3>Младшие классы (7-10 лет)</h3>
+                <p>Теплые тона: желтый, персиковый, светло-оранжевый. Создают чувство безопасности.</p>
+                <div class="palette">
+                    <div style="background-color: #FFE082;"></div>
+                    <div style="background-color: #FFCC80;"></div>
+                    <div style="background-color: #A5D6A7;"></div>
+                    <div style="background-color: #80CBC4;"></div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>Средние классы (11-15 лет)</h3>
+                <p>Спокойные тона: зеленый, приглушенный синий, серый. Успокаивают.</p>
+                <div class="palette">
+                    <div style="background-color: #81C784;"></div>
+                    <div style="background-color: #64B5F6;"></div>
+                    <div style="background-color: #B0BEC5;"></div>
+                    <div style="background-color: #FFB74D;"></div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>Старшие классы (16-18 лет)</h3>
+                <p>Глубокие тона: синий, темно-зеленый, серый. Помогают концентрации.</p>
+                <div class="palette">
+                    <div style="background-color: #3949AB;"></div>
+                    <div style="background-color: #66BB6A;"></div>
+                    <div style="background-color: #9575CD;"></div>
+                    <div style="background-color: #78909C;"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Галерея цветов стен -->
+        <section id="gallery">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h2 class="section-title">Рекомендуемые цвета стен</h2>
+            </div>
+            
+            <div class="gallery-section">
+                <div class="gallery-title">Примеры оформления кабинетов</div>
+                
+                <div class="gallery-container" id="galleryContainer">
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Слайд 1: Светло-желтый -->
+                        <div class="gallery-slide">
+                            <img src="желтый.jpg" alt="Светло-желтые стены" style="background-color: #f9e076;">
+                            <div class="slide-caption">Светло-желтый - для начальных классов</div>
+                        </div>
+                        
+                        <!-- Слайд 2: Бежевый -->
+                        <div class="gallery-slide">
+                            <img src="202309071600.jpg" alt="Бежевые стены" style="background-color: #f5e6d3;">
+                            <div class="slide-caption">Бежевый - нейтральный, для любого возраста</div>
+                        </div>
+                        
+                        <!-- Слайд 3: Светло-зеленый -->
+                        <div class="gallery-slide">
+                            <img src="1200x630_0xac120004_685726261675780063.png" alt="Светло-зеленые стены" style="background-color: #c7e9c0;">
+                            <div class="slide-caption">Светло-зеленый - для средних классов</div>
+                        </div>
+                        
+                        <!-- Слайд 4: Голубой -->
+                        <div class="gallery-slide">
+                            <img src="голубой.jpg" alt="Голубые стены" style="background-color: #bfdbf3;">
+                            <div class="slide-caption">Голубой - для средних и старших классов</div>
+                        </div>
+                        
+                        <!-- Слайд 5: Светло-розовый -->
+                        <div class="gallery-slide">
+                            <img src="розовый.jpg" alt="Светло-розовые стены" style="background-color: #f9d6d6;">
+                            <div class="slide-caption">Светло-розовый - для младших классов</div>
+                        </div>
+                        
+                        <!-- Слайд 6: Серый -->
+                        <div class="gallery-slide">
+                            <img src="серый.jpg" alt="Серые стены" style="background-color: #e0e0e0;">
+                            <div class="slide-caption">Серый - для старших классов</div>
+                        </div>
+                    </div>
+                    
+                    <button class="gallery-btn prev" onclick="prevSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-btn next" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+        </section>
+        
+        <!-- СанПиН -->
+        <section id="sanpin">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h2 class="section-title">Нормы СанПиН</h2>
+            </div>
+                        
+            <h3>Коэффициенты отражения</h3>
+            <ul>
+                <li>Стены: 0.5 - 0.7</li>
+                <li>Потолок: 0.7 - 0.9</li>
+                <li>Пол: 0.4 - 0.5</li>
+                <li>Мебель: 0.45</li>
+                <li>Доска: 0.1 - 0.2</li>
+            </ul>
+            
+            <h3>Температура и влажность</h3>
+            <div class="req-grid">
+                <div class="req-item">
+                    <i class="fas fa-thermometer-half"></i> Классы: 18-24°C
+                </div>
+                <div class="req-item">
+                    <i class="fas fa-thermometer-half"></i> Спортзал: 17-20°C
+                </div>
+                <div class="req-item">
+                    <i class="fas fa-tint"></i> Влажность: 40-60%
+                </div>
+            </div>
+            
+            </section>
+        
+        <!-- Тест -->
+        <section id="quiz">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h2 class="section-title">Проверьте знания</h2>
+            </div>
+            
+            <div class="quiz" id="quizBlock">
+                <!-- Тест будет здесь -->
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem;">ClassroomColor</h3>
+                    <p style="color: #666;">Психология цвета и СанПиН для школ</p>
+                </div>
+                
+                <div>
+                    <ul class="footer-links">
+                        <li><a href="#psychology">Психология</a></li>
+                        <li><a href="#characteristics">Характеристики</a></li>
+                        <li><a href="#temperature">Теплота</a></li>
+                        <li><a href="#age">Возраст</a></li>
+                        <li><a href="#strategy">Стратегия</a></li>
+                        <li><a href="#gallery">Цвета стен</a></li>
+                        <li><a href="#sanpin">СанПиН</a></li>
+                        <li><a href="#quiz">Тест</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2024 ClassroomColor. На основе СанПиН 2.4.2.2821-10
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const el = document.querySelector(this.getAttribute('href'));
+                if (el) {
+                    window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Active nav
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const links = document.querySelectorAll('.nav-links a');
+            
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 80;
+                const bottom = top + sec.clientHeight;
+                if (window.scrollY >= top && window.scrollY < bottom) {
+                    const id = '#' + sec.getAttribute('id');
+                    links.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Gallery
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const track = document.getElementById('galleryTrack');
+        const dotsContainer = document.getElementById('galleryDots');
+        
+        // Create dots
+        if (slides.length > 0) {
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = function() { goToSlide(i); };
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        function updateGallery() {
+            if (track) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                const dots = document.querySelectorAll('.gallery-dot');
+                dots.forEach((dot, i) => {
+                    if (i === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        window.prevSlide = function() {
+            if (slides.length > 0) {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateGallery();
+            }
+        };
+        
+        window.nextSlide = function() {
+            if (slides.length > 0) {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateGallery();
+            }
+        };
+        
+        window.goToSlide = function(n) {
+            if (slides.length > 0 && n >= 0 && n < slides.length) {
+                currentSlide = n;
+                updateGallery();
+            }
+        };
+        
+        // Quiz data
+        const quiz = [
+            {
+                q: "Что изучает психология цвета?",
+                a: [
+                    "Как смешивать краски",
+                    "Влияние цветов на эмоции и поведение",
+                    "Историю цветов в искусстве"
+                ],
+                right: 1
+            },
+            {
+                q: "Три главные характеристики цвета?",
+                a: [
+                    "Красный, синий, желтый",
+                    "Тон, насыщенность, яркость",
+                    "Теплый, холодный, нейтральный"
+                ],
+                right: 1
+            },
+            {
+                q: "Как влияет высокая насыщенность?",
+                a: [
+                    "Успокаивает",
+                    "Возбуждает",
+                    "Не влияет"
+                ],
+                right: 1
+            },
+            {
+                q: "Какие цвета теплые?",
+                a: [
+                    "Синий, голубой",
+                    "Красный, оранжевый, желтый",
+                    "Серый, бежевый"
+                ],
+                right: 1
+            },
+            {
+                q: "Какой цвет любят подростки 13-16 лет?",
+                a: [
+                    "Розовый",
+                    "Синий",
+                    "Коричневый"
+                ],
+                right: 1
+            },
+            {
+                q: "Какой цвет стен рекомендует СанПиН?",
+                a: [
+                    "Ярко-красный",
+                    "Светло-желтый, бежевый, светло-зеленый",
+                    "Темно-синий"
+                ],
+                right: 1
+            },
+            {
+                q: "Какого цвета должна быть доска?",
+                a: [
+                    "Белого",
+                    "Темно-зеленого или темно-коричневого",
+                    "Синего"
+                ],
+                right: 1
+            },
+            {
+                q: "Температура в классе?",
+                a: [
+                    "15-17°C",
+                    "18-24°C",
+                    "25-28°C"
+                ],
+                right: 1
+            },
+            {
+                q: "Цвет мебели по СанПиН?",
+                a: [
+                    "Яркий",
+                    "Натуральное дерево или светло-зеленый",
+                    "Черный"
+                ],
+                right: 1
+            },
+            {
+                q: "Какая должна быть поверхность стен?",
+                a: [
+                    "Глянцевая",
+                    "Матовая",
+                    "Зеркальная"
+                ],
+                right: 1
+            }
+        ];
+        
+        // Quiz state
+        let qNow = 0;
+        let ans = new Array(quiz.length).fill(null);
+        let done = false;
+        
+        // Render
+        function showQuiz() {
+            if (done) {
+                showResult();
+                return;
+            }
+            
+            let html = '';
+            const current = quiz[qNow];
+            const answered = ans[qNow] !== null;
+            const selected = ans[qNow];
+            
+            // Progress
+            html += '<div class="quiz-progress">';
+            for (let i = 0; i < quiz.length; i++) {
+                let cls = 'dot';
+                if (i === qNow) cls += ' active';
+                else if (ans[i] !== null) cls += ' done';
+                html += `<div class="${cls}">${i+1}</div>`;
+            }
+            html += '</div>';
+            
+            // Question
+            html += `<div class="question">`;
+            html += `<div class="q-text">${qNow+1}. ${current.q}</div>`;
+            html += `<div class="options">`;
+            
+            for (let i = 0; i < current.a.length; i++) {
+                let cls = 'option';
+                if (answered) {
+                    cls += ' disabled';
+                    if (i === current.right) cls += ' correct';
+                    if (i === selected && i !== current.right) cls += ' wrong';
+                }
+                let marker = String.fromCharCode(65 + i);
+                html += `<div class="${cls}" onclick="pick(${i})">`;
+                html += `<span class="marker">${marker}</span>`;
+                html += `<span>${current.a[i]}</span>`;
+                html += `</div>`;
+            }
+            
+            // Feedback
+            if (answered) {
+                let correct = selected === current.right;
+                let feedbackCls = 'feedback show ' + (correct ? 'good' : 'bad');
+                let feedbackMsg = correct ? '✓ Правильно!' : '✗ Неправильно. Правильный ответ: ' + current.a[current.right];
+                html += `<div class="${feedbackCls}">${feedbackMsg}</div>`;
+            }
+            
+            html += `</div></div>`;
+            
+            // Navigation
+            html += `<div class="nav-btns">`;
+            html += `<button class="btn btn-secondary" onclick="prev()" ${qNow === 0 ? 'disabled' : ''}><i class="fas fa-arrow-left"></i> Назад</button>`;
+            html += `<button class="btn btn-primary" onclick="next()" ${!answered ? 'disabled' : ''}>${qNow === quiz.length-1 ? 'Завершить' : 'Далее'} ${qNow < quiz.length-1 ? '<i class="fas fa-arrow-right"></i>' : ''}</button>`;
+            html += `</div>`;
+            
+            document.getElementById('quizBlock').innerHTML = html;
+        }
+        
+        window.pick = function(i) {
+            if (ans[qNow] !== null) return;
+            ans[qNow] = i;
+            showQuiz();
+        };
+        
+        window.prev = function() {
+            if (qNow > 0) {
+                qNow--;
+                showQuiz();
+            }
+        };
+        
+        window.next = function() {
+            if (ans[qNow] === null) return;
+            if (qNow < quiz.length - 1) {
+                qNow++;
+                showQuiz();
+            } else {
+                if (ans.every(a => a !== null)) {
+                    done = true;
+                    showQuiz();
+                }
+            }
+        };
+        
+        function showResult() {
+            let correct = 0;
+            for (let i = 0; i < quiz.length; i++) {
+                if (ans[i] === quiz[i].right) correct++;
+            }
+            let percent = Math.round(correct / quiz.length * 100);
+            
+            let html = '<div class="result">';
+            html += '<div class="score">' + correct + '/' + quiz.length + '</div>';
+            
+            let msg = '';
+            if (percent === 100) msg = 'Отлично! Все верно!';
+            else if (percent >= 80) msg = 'Хорошо!';
+            else if (percent >= 60) msg = 'Неплохо';
+            else msg = 'Повторите материал';
+            
+            html += '<p style="margin-bottom: 1.5rem;">' + msg + '</p>';
+            html += '<div style="margin-bottom: 2rem;">';
+            html += '<div style="background: #eee; height: 10px; border-radius: 5px;">';
+            html += '<div style="width: ' + percent + '%; background: #1e3c72; height: 10px; border-radius: 5px;"></div>';
+            html += '</div></div>';
+            
+            // Mistakes
+            let hasMistakes = false;
+            for (let i = 0; i < quiz.length; i++) {
+                if (ans[i] !== quiz[i].right) {
+                    if (!hasMistakes) {
+                        html += '<div class="mistakes"><h4 style="margin-bottom: 1rem;">Ошибки:</h4>';
+                        hasMistakes = true;
+                    }
+                    html += '<div class="mistake-item">';
+                    html += '<p><strong>' + (i+1) + '. ' + quiz[i].q + '</strong></p>';
+                    html += '<p style="color: #c62828;">Ваш ответ: ' + quiz[i].a[ans[i]] + '</p>';
+                    html += '<p style="color: #2e7d32;">Правильно: ' + quiz[i].a[quiz[i].right] + '</p>';
+                    html += '</div>';
+                }
+            }
+            if (hasMistakes) html += '</div>';
+            
+            html += '<button class="restart" onclick="restart()">Пройти заново</button>';
+            html += '</div>';
+            
+            document.getElementById('quizBlock').innerHTML = html;
+        }
+        
+        window.restart = function() {
+            qNow = 0;
+            ans = new Array(quiz.length).fill(null);
+            done = false;
+            showQuiz();
+        };
+        
+        // Start quiz
+        showQuiz();
+    </script>
+</body>
+</html>
