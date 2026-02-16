@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassroomColor - Психология цвета и СанПиН</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -256,7 +257,7 @@
             border-radius: 4px;
         }
         
-        /* Gallery Slider */
+        /* Gallery Slider - обновленный */
         .gallery-section {
             margin: 2rem 0;
         }
@@ -273,6 +274,10 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
+        }
+        
+        .gallery-slider-wrapper {
+            position: relative;
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -285,7 +290,6 @@
         
         .gallery-slide {
             flex: 0 0 100%;
-            position: relative;
         }
         
         .gallery-slide img {
@@ -295,22 +299,9 @@
             display: block;
         }
         
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
         .gallery-btn {
             position: absolute;
-            top: 50%;
+            top: 35%;
             transform: translateY(-50%);
             background: rgba(255,255,255,0.9);
             border: none;
@@ -360,6 +351,28 @@
         .gallery-dot.active {
             background: #1e3c72;
             transform: scale(1.2);
+        }
+        
+        .gallery-description {
+            max-width: 800px;
+            margin: 1.5rem auto 0;
+            padding: 1.5rem;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border-left: 4px solid #1e3c72;
+            min-height: 180px;
+        }
+        
+        .gallery-description h4 {
+            color: #1e3c72;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .gallery-description p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: #555;
         }
         
         /* SanPin Table */
@@ -669,6 +682,7 @@
         
         .footer-links a:hover {
             color: #1e3c72;
+            cursor: pointer;
         }
         
         .copyright {
@@ -677,6 +691,155 @@
             border-top: 1px solid #eee;
             color: #999;
             font-size: 0.9rem;
+        }
+
+        /* Statistics Page */
+        .statistics-page {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .statistics-page h2 {
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #1e3c72;
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #ddd;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background-color: #fafafa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .chart-container {
+            margin: 2rem 0;
+            height: 400px;
+        }
+
+        .stats-list {
+            margin-top: 3rem;
+        }
+
+        .stats-list h3 {
+            margin-bottom: 1rem;
+        }
+
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .stats-table th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .stats-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .clear-stats {
+            background-color: #c62828;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+
+        .clear-stats:hover {
+            background-color: #b71c1c;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .stat-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge-good {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-normal {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-bad {
+            background-color: #ffebee;
+            color: #c62828;
         }
     </style>
 </head>
@@ -700,8 +863,8 @@
                 <li><a href="#psychology" class="active">Психология</a></li>
                 <li><a href="#characteristics">Характеристики</a></li>
                 <li><a href="#temperature">Теплота</a></li>
-                <li><a href="#age">Возраст</a></li>
-                <li><a href="#strategy">Стратегия</a></li>
+                <li><a href="#age">Предпочтения по возрастам</a></li>
+                <li><a href="#strategy">Предпочтения по классам</a></li>
                 <li><a href="#gallery">Цвета стен</a></li>
                 <li><a href="#sanpin">СанПиН</a></li>
                 <li><a href="#quiz">Тест</a></li>
@@ -709,7 +872,7 @@
         </div>
     </nav>
     
-    <main class="container">
+    <main class="container" id="mainContent">
         <!-- Психология цвета -->
         <section id="psychology">
             <div class="section-header">
@@ -800,7 +963,7 @@
                 <div class="section-icon">
                     <i class="fas fa-child"></i>
                 </div>
-                <h2 class="section-title">Восприятие цвета в разном возрасте</h2>
+                <h2 class="section-title">Предпочтения по возрастам</h2>
             </div>
             
             <div class="info-card">
@@ -848,18 +1011,18 @@
             </div>
         </section>
         
-        <!-- Стратегия по возрастам -->
+        <!-- Стратегия по классам -->
         <section id="strategy">
             <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <h2 class="section-title">Цвета для разных классов</h2>
+                <h2 class="section-title">Предпочтения по классам</h2>
             </div>
             
             <div class="info-card">
-                <h3>Младшие классы (7-10 лет)</h3>
-                <p>Теплые тона: желтый, персиковый, светло-оранжевый. Создают чувство безопасности.</p>
+                <h3>Младшие классы (1-4 классы, 7-10 лет)</h3>
+                <p>Теплые тона: желтый, персиковый, светло-оранжевый. Создают чувство безопасности и радости, стимулируют коммуникацию, помогают адаптироваться к школе. Дети в этом возрасте воспринимают мир через игру и яркие образы.</p>
                 <div class="palette">
                     <div style="background-color: #FFE082;"></div>
                     <div style="background-color: #FFCC80;"></div>
@@ -869,8 +1032,8 @@
             </div>
             
             <div class="info-card">
-                <h3>Средние классы (11-15 лет)</h3>
-                <p>Спокойные тона: зеленый, приглушенный синий, серый. Успокаивают.</p>
+                <h3>Средние классы (5-9 классы, 11-15 лет)</h3>
+                <p>Спокойные тона: зеленый, приглушенный синий, серый. Успокаивают, помогают сконцентрироваться, снижают напряжение. В этом возрасте происходит гормональная перестройка, эмоциональная нестабильность, поэтому важно создать уравновешивающую среду.</p>
                 <div class="palette">
                     <div style="background-color: #81C784;"></div>
                     <div style="background-color: #64B5F6;"></div>
@@ -880,8 +1043,8 @@
             </div>
             
             <div class="info-card">
-                <h3>Старшие классы (16-18 лет)</h3>
-                <p>Глубокие тона: синий, темно-зеленый, серый. Помогают концентрации.</p>
+                <h3>Старшие классы (10-11 классы, 16-18 лет)</h3>
+                <p>Глубокие тона: синий, темно-зеленый, серый. Помогают концентрации, создают рабочую атмосферу, способствуют интеллектуальной работе. Старшеклассники испытывают высокие нагрузки и стресс от экзаменов, им нужна серьезная, но не угнетающая обстановка.</p>
                 <div class="palette">
                     <div style="background-color: #3949AB;"></div>
                     <div style="background-color: #66BB6A;"></div>
@@ -903,54 +1066,56 @@
             <div class="gallery-section">
                 <div class="gallery-title">Примеры оформления кабинетов</div>
                 
-                <div class="gallery-container" id="galleryContainer">
-                    <div class="gallery-track" id="galleryTrack">
-                        <!-- Слайд 1: Светло-желтый -->
-                        <div class="gallery-slide">
-                            <img src="желтый.jpg" alt="Светло-желтые стены" style="background-color: #f9e076;">
-                            <div class="slide-caption">Светло-желтый - для начальных классов</div>
+                <div class="gallery-container">
+                    <div class="gallery-slider-wrapper">
+                        <div class="gallery-track" id="galleryTrack">
+                            <!-- Слайд 1: Светло-желтый -->
+                            <div class="gallery-slide">
+                                <img src="желтый.jpg" alt="Светло-желтые стены" style="background-color: #f9e076;">
+                            </div>
+                            
+                            <!-- Слайд 2: Бежевый -->
+                            <div class="gallery-slide">
+                                <img src="202309071600.jpg" alt="Бежевые стены" style="background-color: #f5e6d3;">
+                            </div>
+                            
+                            <!-- Слайд 3: Светло-зеленый -->
+                            <div class="gallery-slide">
+                                <img src="1200x630_0xac120004_685726261675780063.png" alt="Светло-зеленые стены" style="background-color: #c7e9c0;">
+                            </div>
+                            
+                            <!-- Слайд 4: Голубой -->
+                            <div class="gallery-slide">
+                                <img src="голубой.jpg" alt="Голубые стены" style="background-color: #bfdbf3;">
+                            </div>
+                            
+                            <!-- Слайд 5: Светло-розовый -->
+                            <div class="gallery-slide">
+                                <img src="розовый.jpg" alt="Светло-розовые стены" style="background-color: #f9d6d6;">
+                            </div>
+                            
+                            <!-- Слайд 6: Серый -->
+                            <div class="gallery-slide">
+                                <img src="серый.jpg" alt="Серые стены" style="background-color: #e0e0e0;">
+                            </div>
                         </div>
                         
-                        <!-- Слайд 2: Бежевый -->
-                        <div class="gallery-slide">
-                            <img src="202309071600.jpg" alt="Бежевые стены" style="background-color: #f5e6d3;">
-                            <div class="slide-caption">Бежевый - нейтральный, для любого возраста</div>
-                        </div>
-                        
-                        <!-- Слайд 3: Светло-зеленый -->
-                        <div class="gallery-slide">
-                            <img src="1200x630_0xac120004_685726261675780063.png" alt="Светло-зеленые стены" style="background-color: #c7e9c0;">
-                            <div class="slide-caption">Светло-зеленый - для средних классов</div>
-                        </div>
-                        
-                        <!-- Слайд 4: Голубой -->
-                        <div class="gallery-slide">
-                            <img src="голубой.jpg" alt="Голубые стены" style="background-color: #bfdbf3;">
-                            <div class="slide-caption">Голубой - для средних и старших классов</div>
-                        </div>
-                        
-                        <!-- Слайд 5: Светло-розовый -->
-                        <div class="gallery-slide">
-                            <img src="розовый.jpg" alt="Светло-розовые стены" style="background-color: #f9d6d6;">
-                            <div class="slide-caption">Светло-розовый - для младших классов</div>
-                        </div>
-                        
-                        <!-- Слайд 6: Серый -->
-                        <div class="gallery-slide">
-                            <img src="серый.jpg" alt="Серые стены" style="background-color: #e0e0e0;">
-                            <div class="slide-caption">Серый - для старших классов</div>
-                        </div>
+                        <button class="gallery-btn prev" onclick="prevSlide()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-btn next" onclick="nextSlide()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                     
-                    <button class="gallery-btn prev" onclick="prevSlide()">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="gallery-btn next" onclick="nextSlide()">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div class="gallery-dots" id="galleryDots"></div>
+                    
+                    <div class="gallery-description" id="galleryDescription">
+                        <!-- Описание будет обновляться через JavaScript -->
+                        <h4>Светло-желтый</h4>
+                        <p>Для начальных классов. Желтый цвет ассоциируется с солнцем, теплом и радостью. Он стимулирует познавательную активность, создает ощущение защищенности и помогает первоклассникам легче адаптироваться к школьной жизни. Мягкие оттенки желтого не перевозбуждают, а создают бодрую, оптимистичную атмосферу. Идеально подходит для кабинетов 1-4 классов, где важно поддерживать интерес к учебе и эмоциональный комфорт.</p>
+                    </div>
                 </div>
-                
-                <div class="gallery-dots" id="galleryDots"></div>
             </div>
         </section>
         
@@ -985,7 +1150,7 @@
                 </div>
             </div>
             
-            </section>
+        </section>
         
         <!-- Тест -->
         <section id="quiz">
@@ -1001,6 +1166,11 @@
             </div>
         </section>
     </main>
+
+    <!-- Страница статистики (скрыта по умолчанию) -->
+    <div id="statisticsPage" class="statistics-page hidden" style="margin: 2rem auto;">
+        <!-- Контент будет добавлен через JavaScript -->
+    </div>
     
     <footer>
         <div class="container">
@@ -1015,11 +1185,12 @@
                         <li><a href="#psychology">Психология</a></li>
                         <li><a href="#characteristics">Характеристики</a></li>
                         <li><a href="#temperature">Теплота</a></li>
-                        <li><a href="#age">Возраст</a></li>
-                        <li><a href="#strategy">Стратегия</a></li>
+                        <li><a href="#age">Предпочтения по возрастам</a></li>
+                        <li><a href="#strategy">Предпочтения по классам</a></li>
                         <li><a href="#gallery">Цвета стен</a></li>
                         <li><a href="#sanpin">СанПиН</a></li>
                         <li><a href="#quiz">Тест</a></li>
+                        <li><a onclick="showStatistics()" style="cursor: pointer;">Статистика</a></li>
                     </ul>
                 </div>
             </div>
@@ -1031,6 +1202,11 @@
     </footer>
     
     <script>
+        // Глобальные переменные
+        let currentSlide = 0;
+        let quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+        let charts = {};
+
         // Mobile menu
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -1068,11 +1244,39 @@
             });
         });
         
+        // Gallery data
+        const galleryDescriptions = [
+            {
+                title: "Светло-желтый",
+                text: "Для начальных классов. Желтый цвет ассоциируется с солнцем, теплом и радостью. Он стимулирует познавательную активность, создает ощущение защищенности и помогает первоклассникам легче адаптироваться к школьной жизни. Мягкие оттенки желтого не перевозбуждают, а создают бодрую, оптимистичную атмосферу. Идеально подходит для кабинетов 1-4 классов, где важно поддерживать интерес к учебе и эмоциональный комфорт."
+            },
+            {
+                title: "Бежевый",
+                text: "Нейтральный, для любого возраста. Бежевый цвет создает спокойный, уравновешенный фон, который не отвлекает и не утомляет. Он помогает сосредоточиться на учебном материале, при этом дает ощущение стабильности и уюта. Бежевый хорошо сочетается с яркими акцентами, например, с цветными стендами или мебелью, и подходит для любых классов. Особенно рекомендуется для кабинетов, где учатся дети разного возраста."
+            },
+            {
+                title: "Светло-зеленый",
+                text: "Для средних классов. Зеленый цвет снижает стресс, успокаивает нервную систему и меньше всех утомляет глаза. Для подростков 11-15 лет, которые переживают гормональную перестройку и эмоциональную нестабильность, зеленый помогает сбалансировать состояние, снизить тревожность и повысить концентрацию. Это лучший выбор для кабинетов, где требуется длительная умственная работа, например, для классов русского языка, литературы, истории."
+            },
+            {
+                title: "Голубой",
+                text: "Для средних и старших классов. Голубой цвет улучшает концентрацию, стимулирует мыслительные процессы и создает рабочую атмосферу. Он ассоциируется с порядком, дисциплиной и спокойствием. Особенно эффективен в кабинетах точных наук (математика, физика, химия), где важна четкость и сосредоточенность. Не рекомендуется для младших классов — может казаться слишком \"холодным\" для детей 7-10 лет."
+            },
+            {
+                title: "Светло-розовый",
+                text: "Для младших классов. Мягкий розовый цвет создает нежную, уютную атмосферу, особенно нравится девочкам младшего школьного возраста. Он снижает агрессию, успокаивает и настраивает на доброжелательное общение. Хорошо подходит для кабинетов начальной школы, особенно для уроков чтения, рисования, музыки и других творческих занятий, где важна эмоциональная открытость."
+            },
+            {
+                title: "Серый",
+                text: "Для старших классов. Серый цвет не отвлекает, позволяет полностью погрузиться в учебный процесс и создает деловую атмосферу. Старшеклассники, готовящиеся к экзаменам, нуждаются именно в таком фоне — строгом, но не давящем. Важно выбирать теплые оттенки серого и обязательно разбавлять их яркими акцентами, например, синими, зелеными или оранжевыми деталями в мебели или на стендах."
+            }
+        ];
+        
         // Gallery
-        let currentSlide = 0;
         const slides = document.querySelectorAll('.gallery-slide');
         const track = document.getElementById('galleryTrack');
         const dotsContainer = document.getElementById('galleryDots');
+        const descriptionDiv = document.getElementById('galleryDescription');
         
         // Create dots
         if (slides.length > 0) {
@@ -1097,6 +1301,14 @@
                         dot.classList.remove('active');
                     }
                 });
+                
+                // Update description
+                if (descriptionDiv && galleryDescriptions[currentSlide]) {
+                    descriptionDiv.innerHTML = `
+                        <h4>${galleryDescriptions[currentSlide].title}</h4>
+                        <p>${galleryDescriptions[currentSlide].text}</p>
+                    `;
+                }
             }
         }
         
@@ -1121,97 +1333,107 @@
             }
         };
         
-        // Quiz data
+        // Quiz data - УСЛОЖНЕННЫЕ ВОПРОСЫ ПО ТЕКСТУ
         const quiz = [
             {
-                q: "Что изучает психология цвета?",
+                q: "Согласно тексту, что именно изучает психология цвета в контексте образовательной среды?",
                 a: [
-                    "Как смешивать краски",
-                    "Влияние цветов на эмоции и поведение",
-                    "Историю цветов в искусстве"
+                    "Техники смешивания красок для получения оптимальных оттенков",
+                    "Воздействие цветов на эмоции, поведение и психическое состояние учащихся",
+                    "Историю развития цветовых предпочтений у школьников разных поколений",
+                    "Влияние цветов на стоимость ремонта школьных кабинетов"
                 ],
-                right: 1
+                right: 1 // B
             },
             {
-                q: "Три главные характеристики цвета?",
+                q: "Какой из трех компонентов цвета отвечает за то, что мы называем цвет его именем (красный, синий)?",
                 a: [
-                    "Красный, синий, желтый",
-                    "Тон, насыщенность, яркость",
-                    "Теплый, холодный, нейтральный"
+                    "Тон",
+                    "Насыщенность",
+                    "Яркость",
+                    "Теплота"
                 ],
-                right: 1
+                right: 0 // A
             },
             {
-                q: "Как влияет высокая насыщенность?",
+                q: "Что происходит при длительном воздействии ярких теплых тонов согласно разделу о теплоте цвета?",
                 a: [
-                    "Успокаивает",
-                    "Возбуждает",
-                    "Не влияет"
+                    "Замедление пульса и расслабление мышц",
+                    "Снижение артериального давления",
+                    "Перевозбуждение и утомление",
+                    "Повышение концентрации внимания"
                 ],
-                right: 1
+                right: 2 // C
             },
             {
-                q: "Какие цвета теплые?",
+                q: "Какие цвета в тексте отнесены к нейтральным и описаны как не оказывающие выраженного физиологического воздействия?",
                 a: [
-                    "Синий, голубой",
+                    "Синий, голубой, фиолетовый",
                     "Красный, оранжевый, желтый",
-                    "Серый, бежевый"
+                    "Зеленый, бирюзовый, синий",
+                    "Белый, серый, бежевый, коричневый"
                 ],
-                right: 1
+                right: 3 // D
             },
             {
-                q: "Какой цвет любят подростки 13-16 лет?",
+                q: "Для какой возрастной группы, согласно тексту, характерно доминирование синего, ультрамарина и оранжевого?",
                 a: [
-                    "Розовый",
-                    "Синий",
-                    "Коричневый"
+                    "17-19 лет",
+                    "4-10 лет",
+                    "13-16 лет",
+                    "11-12 лет"
                 ],
-                right: 1
+                right: 2 // C
             },
             {
-                q: "Какой цвет стен рекомендует СанПиН?",
+                q: "Согласно нормам СанПиН, какой коэффициент отражения должны иметь стены учебных помещений?",
                 a: [
-                    "Ярко-красный",
-                    "Светло-желтый, бежевый, светло-зеленый",
-                    "Темно-синий"
+                    "0,7 - 0,9",
+                    "0,5 - 0,7",
+                    "0,4 - 0,5",
+                    "0,1 - 0,2"
                 ],
-                right: 1
+                right: 1 // B
             },
             {
-                q: "Какого цвета должна быть доска?",
+                q: "Почему в тексте рекомендуется использовать для классных досок именно темно-зеленый или темно-коричневый цвет?",
                 a: [
-                    "Белого",
-                    "Темно-зеленого или темно-коричневого",
-                    "Синего"
+                    "Потому что СанПиН запрещает использовать черный цвет",
+                    "Потому что черный глянец создает блики и утомляет глаза",
+                    "Потому что темно-зеленый улучшает видимость мела",
+                    "Потому что эти цвета лучше сочетаются с интерьером"
                 ],
-                right: 1
+                right: 1 // B
             },
             {
-                q: "Температура в классе?",
+                q: "Какая температура воздуха должна поддерживаться в классных помещениях согласно нормам, упомянутым в тексте?",
                 a: [
-                    "15-17°C",
                     "18-24°C",
+                    "15-17°C",
+                    "20-22°C",
                     "25-28°C"
                 ],
-                right: 1
+                right: 0 // A
             },
             {
-                q: "Цвет мебели по СанПиН?",
+                q: "Какой цвет мебели рекомендуется СанПиН согласно тексту?",
                 a: [
-                    "Яркий",
-                    "Натуральное дерево или светло-зеленый",
-                    "Черный"
+                    "Белый, чтобы соответствовать потолку",
+                    "Яркие насыщенные тона для стимуляции активности",
+                    "Цвет натурального дерева или светло-зеленый",
+                    "Только цвет натурального дерева"
                 ],
-                right: 1
+                right: 2 // C
             },
             {
-                q: "Какая должна быть поверхность стен?",
+                q: "Согласно цветовой стратегии для младших школьников (7-10 лет), какой цвет рекомендуется в качестве основного для стен?",
                 a: [
-                    "Глянцевая",
-                    "Матовая",
-                    "Зеркальная"
+                    "Глубокий синий (ультрамарин)",
+                    "Темно-серый",
+                    "Фиолетовый",
+                    "Теплый желтый, персиковый, светло-оранжевый"
                 ],
-                right: 1
+                right: 3 // D
             }
         ];
         
@@ -1220,7 +1442,7 @@
         let ans = new Array(quiz.length).fill(null);
         let done = false;
         
-        // Render
+        // Render quiz
         function showQuiz() {
             if (done) {
                 showResult();
@@ -1254,7 +1476,7 @@
                     if (i === current.right) cls += ' correct';
                     if (i === selected && i !== current.right) cls += ' wrong';
                 }
-                let marker = String.fromCharCode(65 + i);
+                let marker = String.fromCharCode(65 + i); // A, B, C, D
                 html += `<div class="${cls}" onclick="pick(${i})">`;
                 html += `<span class="marker">${marker}</span>`;
                 html += `<span>${current.a[i]}</span>`;
@@ -1313,6 +1535,16 @@
             }
             let percent = Math.round(correct / quiz.length * 100);
             
+            // Сохраняем результат
+            const result = {
+                date: new Date().toLocaleString(),
+                score: correct,
+                total: quiz.length,
+                percent: percent
+            };
+            quizResults.push(result);
+            localStorage.setItem('quizResults', JSON.stringify(quizResults));
+            
             let html = '<div class="result">';
             html += '<div class="score">' + correct + '/' + quiz.length + '</div>';
             
@@ -1356,6 +1588,190 @@
             ans = new Array(quiz.length).fill(null);
             done = false;
             showQuiz();
+        };
+        
+        // Статистика
+        window.showStatistics = function() {
+            const mainContent = document.getElementById('mainContent');
+            const statsPage = document.getElementById('statisticsPage');
+            
+            mainContent.classList.add('hidden');
+            statsPage.classList.remove('hidden');
+            
+            renderStatistics();
+        };
+        
+        window.hideStatistics = function() {
+            const mainContent = document.getElementById('mainContent');
+            const statsPage = document.getElementById('statisticsPage');
+            
+            mainContent.classList.remove('hidden');
+            statsPage.classList.add('hidden');
+        };
+        
+        function renderStatistics() {
+            const statsPage = document.getElementById('statisticsPage');
+            
+            if (quizResults.length === 0) {
+                statsPage.innerHTML = `
+                    <div class="stats-header">
+                        <h2>Статистика теста</h2>
+                        <button class="back-btn" onclick="hideStatistics()">← Вернуться на сайт</button>
+                    </div>
+                    <div style="text-align: center; padding: 3rem; background: #fafafa; border-radius: 8px;">
+                        <i class="fas fa-chart-bar" style="font-size: 4rem; color: #ccc; margin-bottom: 1rem;"></i>
+                        <p style="color: #666;">Пока нет результатов тестов. Пройдите тест, чтобы увидеть статистику.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Подготовка данных для графиков
+            const dates = quizResults.map(r => r.date.split(',')[0]);
+            const scores = quizResults.map(r => r.score);
+            const percents = quizResults.map(r => r.percent);
+            
+            // Статистика
+            const avgScore = Math.round(quizResults.reduce((sum, r) => sum + r.percent, 0) / quizResults.length);
+            const bestScore = Math.max(...percents);
+            const worstScore = Math.min(...percents);
+            
+            let html = `
+                <div class="stats-header">
+                    <h2>Статистика теста</h2>
+                    <button class="back-btn" onclick="hideStatistics()">← Вернуться на сайт</button>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">${quizResults.length}</div>
+                        <div class="stat-label">Всего прохождений</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${avgScore}%</div>
+                        <div class="stat-label">Средний результат</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${bestScore}%</div>
+                        <div class="stat-label">Лучший результат</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">${worstScore}%</div>
+                        <div class="stat-label">Худший результат</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="scoresChart"></canvas>
+                </div>
+                
+                <div class="stats-list">
+                    <h3>История прохождений</h3>
+                    <table class="stats-table">
+                        <tr>
+                            <th>Дата</th>
+                            <th>Результат</th>
+                            <th>Процент</th>
+                            <th>Оценка</th>
+                        </tr>
+            `;
+            
+            quizResults.slice().reverse().forEach(r => {
+                let badgeClass = 'stat-badge ';
+                if (r.percent >= 80) badgeClass += 'badge-good';
+                else if (r.percent >= 60) badgeClass += 'badge-normal';
+                else badgeClass += 'badge-bad';
+                
+                let grade = r.percent >= 80 ? 'Отлично' : (r.percent >= 60 ? 'Хорошо' : 'Плохо');
+                
+                html += `
+                    <tr>
+                        <td>${r.date}</td>
+                        <td>${r.score}/${r.total}</td>
+                        <td>${r.percent}%</td>
+                        <td><span class="${badgeClass}">${grade}</span></td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                    </table>
+                    <button class="clear-stats" onclick="clearStatistics()">Очистить всю статистику</button>
+                </div>
+            `;
+            
+            statsPage.innerHTML = html;
+            
+            // Создаем график
+            setTimeout(() => {
+                const ctx = document.getElementById('scoresChart').getContext('2d');
+                
+                // Уничтожаем предыдущий график если есть
+                if (charts.scoresChart) {
+                    charts.scoresChart.destroy();
+                }
+                
+                charts.scoresChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Результаты тестов (%)',
+                            data: percents,
+                            borderColor: '#1e3c72',
+                            backgroundColor: 'rgba(30, 60, 114, 0.1)',
+                            tension: 0.3,
+                            fill: true,
+                            pointBackgroundColor: '#1e3c72',
+                            pointBorderColor: 'white',
+                            pointBorderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Результат: ${context.raw}%`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Процент правильных ответов'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Дата прохождения'
+                                }
+                            }
+                        }
+                    }
+                });
+            }, 100);
+        }
+        
+        window.clearStatistics = function() {
+            if (confirm('Вы уверены, что хотите удалить всю статистику?')) {
+                quizResults = [];
+                localStorage.removeItem('quizResults');
+                renderStatistics();
+            }
         };
         
         // Start quiz
